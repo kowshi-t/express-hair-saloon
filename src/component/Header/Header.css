@@ -1,0 +1,18 @@
+Nav.Link{
+    color: black;
+}
+
+Button{
+    width: 163px;
+    height: 53px;
+}
+
+a.nav-link{
+    font-weight: 500;
+    margin-left: 40px;
+    margin-top: 5px;
+}
+
+.booknow-btn{
+    margin-left: 40px;
+}

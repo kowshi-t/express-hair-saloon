@@ -1,0 +1,129 @@
+:root {
+    --primaryabt: hsl(17, 11%, 75%);
+    --secondaryabt: hsla(337, 25%, 66%, 0.847);
+    --primary: hsla(0, 0%, 0%, 0);
+    --secondary: hsla(0, 0%, 3%, 0.847);
+}
+
+.home-container {
+    height: 625px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary)),
+        url("./../../../public/home-content.png");
+    position: relative;
+    background-size: cover;
+}
+
+/* .home-container::before{
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+} */
+
+.overlay {
+    width: 40%;
+    height: 70%;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay h1 {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 99%;
+    letter-spacing: -0.03em;
+}
+
+.overlay p {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+}
+
+.services {
+    height: 625px;
+}
+
+.services h1 {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 99%;
+    letter-spacing: -0.03em;
+    text-align: center;
+    margin-top: 66px;
+}
+
+.card{
+    width: 29vw;
+}
+
+.card img{
+    width: 394px;
+}
+
+span.carousel-control-next-icon {
+    background-image: url("./../../../public/right.png");
+}
+
+span.carousel-control-prev-icon {
+    background-image: url("./../../../public/left.png");
+}
+
+.cards-wrapper {
+    display: flex;
+    margin-left: 11%;
+    margin-top: 30px;
+}
+
+.about-us {
+    height: 625px;
+    background: linear-gradient(135deg, var(--primaryabt), var(--secondaryabt)),
+        url("./../../../public/home-content.png");
+    background-repeat: no-repeat;
+    position: relative;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.overlay-about-us h1 {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 99%;
+    letter-spacing: -0.03em;
+    margin-top: 70px;
+    position: absolute;
+    width: 191px;
+    height: 50px;
+    left: 625px;
+}
+
+.overlay-about-us p {
+    position: absolute;
+    width: 803px;
+    height: 218px;
+    left: 318px;
+    font-style: normal;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 150%;
+    text-align: center;
+    margin-top: 13%;
+}
