@@ -53,7 +53,7 @@ function Booking() {
                   <div className="booking-payment">
                     <h3>Total: USD 25.00</h3>
 
-                    <Button className="btn-submit" type="submit" href="">
+                    <Button className="btn-submit" type="submit">
                       Pay Now
                     </Button>
                   </div>

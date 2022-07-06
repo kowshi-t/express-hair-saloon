@@ -1,6 +1,6 @@
 :root {
-    --primaryabt: hsl(17, 11%, 75%);
-    --secondaryabt: hsla(337, 25%, 66%, 0.847);
+    --primaryabt: hsla(334, 68%, 91%, 0.932);
+    --secondaryabt: hsla(328, 31%, 90%, 0.849);
     --primary: hsla(0, 0%, 0%, 0);
     --secondary: hsla(0, 0%, 3%, 0.847);
 }
@@ -26,12 +26,10 @@
 
 .overlay {
     width: 40%;
-    height: 70%;
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.7);
+    margin-left: 110px;
 }
 
 .overlay h1 {
@@ -48,7 +46,15 @@
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
-    line-height: 150%;
+    margin-top: 20px;
+}
+
+.overlay Button {
+    margin-top: 10px;
+}
+
+.inner-content {
+    margin-top: 250px;
 }
 
 .services {
@@ -66,20 +72,72 @@
     margin-top: 66px;
 }
 
-.card{
-    width: 29vw;
+.slider{
+    margin-top: 40px;
+    margin-left: 20px;
 }
 
-.card img{
-    width: 394px;
+.service-card {
+    width: 25vw;
+    height: 60vh;
+    background-color: #FAFAFA;
 }
 
-span.carousel-control-next-icon {
+.service-card img {
+    width: 339px;
+}
+
+.card-top h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 99%;
+    letter-spacing: -0.03em;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+
+.card-buttom h3 {
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    margin-left: 30px;
+}
+
+.reservation{
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 150%;
+    margin-left: 40px;
+    text-decoration: none;
+    color: #B99A5F;
+}
+
+.reservation:hover{
+    color: #e0ba71;
+}
+
+button.slick-arrow.slick-next {
     background-image: url("./../../../public/right.png");
+    background-repeat: no-repeat;
 }
 
-span.carousel-control-prev-icon {
+button.slick-arrow.slick-next::before {
+    content: none;
+}
+
+button.slick-arrow.slick-prev {
     background-image: url("./../../../public/left.png");
+    background-repeat: no-repeat;
+}
+
+button.slick-arrow.slick-prev::before {
+    content: none;
 }
 
 .cards-wrapper {
@@ -89,7 +147,7 @@ span.carousel-control-prev-icon {
 }
 
 .about-us {
-    height: 625px;
+    height: 425px;
     background: linear-gradient(135deg, var(--primaryabt), var(--secondaryabt)),
         url("./../../../public/home-content.png");
     background-repeat: no-repeat;
@@ -120,10 +178,32 @@ span.carousel-control-prev-icon {
     height: 218px;
     left: 318px;
     font-style: normal;
-    font-family: 'Poppins';
-    font-weight: 600;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 400;
     font-size: 14px;
     line-height: 150%;
     text-align: center;
     margin-top: 13%;
+}
+
+.reserve {
+    position: absolute;
+    width: 803px;
+    left: 318px;
+    font-style: normal;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 150%;
+    text-align: center;
+    margin-top: 23%;
+}
+
+.schedule{
+    text-decoration: none;
+    color: #B99A5F;
+}
+
+.schedule:hover{
+    color: #e0ba71;
 }

@@ -5,6 +5,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import {Routes, Route} from "react-router-dom";
 import Booking from './component/Booking/Booking'
+import Services from './component/Services/Services';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <Route path='' element={<Home />}></Route>
         <Route path='/home' element={<Home />}></Route>
         <Route path='/booking' element={<Booking />}></Route>
+        <Route path='/services' element={<Services />}></Route>
       </Routes>
     </>
   );
