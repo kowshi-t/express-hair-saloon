@@ -4,11 +4,13 @@ import Header from '../Header/Header'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Services() {
 
   const navigate = useNavigate();
+  let { type } = useParams();
+  
 
   return (
     <>
@@ -17,8 +19,8 @@ function Services() {
         <Col className="col-lg-6">
           <div className="left_data">
             <div className="services-content">
-              <h3>Haircut</h3>
-              <div class="col">
+              <h3>{type}</h3>
+              <div className="col">
                 <p>
                   At Prauge we are passionate about making people feel good while looking their best.
                   Attending advanced education allows us to keep up with the latest trends and provide each
@@ -26,7 +28,7 @@ function Services() {
                   today!
                 </p>
               </div>
-              <Button variant="dark" className="reserve-btn" onClick={() => navigate("/booking")}>Make a Reservation</Button>
+              <Button variant="dark" className="reserve-btn" onClick={() => navigate("/booking/"+type)}>Make a Reservation</Button>
             </div>
           </div>
         </Col>

@@ -13,7 +13,7 @@ function Header() {
     return (
         <Navbar bg="white" expand="lg">
             <Container>
-                <Navbar.Brand href="#home">
+                <Navbar.Brand href="/home">
                     <img
                         src="/logo.png"
                         className="d-inline-block align-top"
@@ -26,8 +26,8 @@ function Header() {
                         <Nav.Link href="/home">Home</Nav.Link>
                         <Nav.Link href="#about">About</Nav.Link>
                         <Nav.Link href="#services">Services</Nav.Link>
-                        <Nav.Link href="#shop">Shop</Nav.Link>
-                        <Button variant="dark" className="booknow-btn" onClick={() => navigate("/booking")}>Book now</Button>
+                        <Nav.Link href="/shop">Shop</Nav.Link>
+                        <Button variant="dark" className="booknow-btn" onClick={() => navigate("/booking/Haircut")}>Book now</Button>
                     </Nav>
                 </Navbar.Collapse>
             </Container>

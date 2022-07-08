@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import './Home.css'
 import Slider from "react-slick"
 import { useNavigate } from "react-router-dom";
+import servicesData from '../../ServiceType.json';
 
 function Home() {
 
@@ -29,7 +30,7 @@ function Home() {
                             Attending advanced education allows us to keep up with the latest trends and provide
                             each guest with a unique & customizable result. For your convenience, Schedule your
                             reservation today!</p>
-                        <Button variant="outline-light" onClick={() => navigate("/booking")}>Book now</Button>
+                        <Button variant="outline-light" onClick={() => navigate("/booking/Haircut")}>Book now</Button>
                     </div>
                 </div>
             </Container>
@@ -38,7 +39,25 @@ function Home() {
                 <h1>Services</h1>
 
                 <Slider {...settings}>
-                    <div className="slider">
+                    {
+                        servicesData.map((items) => (
+                            <div className="slider">
+                                <div className="service-card">
+                                    <div className="card-top">
+                                        <img src={items.imageLink} alt={items.altText} />
+                                        <h3>{items.title}</h3>
+                                    </div>
+
+                                    <div className="card-buttom">
+                                        <h3>{items.desc}</h3>
+                                        <a href={"/services/"+items.title} className="reservation">MAKE A RESERVATION</a>
+                                    </div>
+                                </div>
+                            </div>
+                        ))
+                    }
+
+                    {/* <div className="slider">
                         <div className="service-card">
                             <div className="card-top">
                                 <img src="/hair-cut.png" alt="haircut img" />
@@ -46,9 +65,9 @@ function Home() {
                             </div>
 
                             <div className="card-buttom">
-                                <h3>Signature cutting techniques, our highly skilled teams will create a bespoke look to suit your 
+                                <h3>Signature cutting techniques, our highly skilled teams will create a bespoke look to suit your
                                     individuality, lifestyle, and hair texture.</h3>
-                                <a href="/services" className="reservation">MAKE A RESERVATION</a>
+                                <a href="/services/Haircut" className="reservation">MAKE A RESERVATION</a>
                             </div>
                         </div>
                     </div>
@@ -60,10 +79,10 @@ function Home() {
                             </div>
 
                             <div className="card-buttom">
-                                <h3>Our hair stylists are some of the top hairdressers.Their diverse hair 
-                                    styling talents will make your first choice whether you have long or 
+                                <h3>Our hair stylists are some of the top hairdressers.Their diverse hair
+                                    styling talents will make your first choice whether you have long or
                                     short hair.</h3>
-                                <a href="/services" className="reservation">MAKE A RESERVATION</a>
+                                <a href="/services/Hair Styling" className="reservation">MAKE A RESERVATION</a>
                             </div>
                         </div>
                     </div>
@@ -75,16 +94,13 @@ function Home() {
                             </div>
 
                             <div className="card-buttom">
-                                <h3>We offer makeup application services for women in Coral Gables and 
+                                <h3>We offer makeup application services for women in Coral Gables and
                                     Brickell with a sense of style. We wll apply your makeup to suit whatever
                                     the special occasion.</h3>
-                                <a href="/services" className="reservation">MAKE A RESERVATION</a>
+                                <a href="/services/Makeup" className="reservation">MAKE A RESERVATION</a>
                             </div>
                         </div>
-                    </div>
-                    <div className="slider">
-                        <h3>4</h3>
-                    </div>
+                    </div> */}
                 </Slider>
 
                 {/* <Carousel>
@@ -144,7 +160,7 @@ function Home() {
                         online booking 24 hours a day.
                     </p>
                     <div className="reserve">
-                        <a href="/booking" className="schedule">Schedule your reservation today!</a>
+                        <a href="/booking/Haircut" className="schedule">Schedule your reservation today!</a>
                     </div>
 
                 </div>
