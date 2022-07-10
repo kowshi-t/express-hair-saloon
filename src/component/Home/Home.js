@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Container from 'react-bootstrap/esm/Container'
 import Button from 'react-bootstrap/Button'
 import Header from '../Header/Header'
@@ -6,6 +6,8 @@ import './Home.css'
 import Slider from "react-slick"
 import { useNavigate } from "react-router-dom";
 import servicesData from '../../ServiceType.json';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function Home() {
 
@@ -17,6 +19,11 @@ function Home() {
         slidesToScroll: 1
     };
 
+    useEffect(() => {
+        AOS.init();
+        AOS.refresh();
+      }, []);
+
     const navigate = useNavigate();
 
     return (
@@ -24,9 +31,9 @@ function Home() {
             <Header />
             <Container fluid className="home-container" id="home">
                 <div className="overlay">
-                    <div className="inner-content">
+                    <div className="inner-content" data-aos="fade-up-right" data-aos-duration="1000">
                         <h1>Always make room for beauty in your life</h1>
-                        <p>At Prauge we are passionate about making people feel good while looking their best.
+                        <p>At Express we are passionate about making people feel good while looking their best.
                             Attending advanced education allows us to keep up with the latest trends and provide
                             each guest with a unique & customizable result. For your convenience, Schedule your
                             reservation today!</p>
@@ -36,12 +43,12 @@ function Home() {
             </Container>
 
             <Container className="services" id="services">
-                <h1>Services</h1>
+                <h1 data-aos="fade-up" data-aos-duration="1000">Services</h1>
 
                 <Slider {...settings}>
                     {
                         servicesData.map((items) => (
-                            <div className="slider">
+                            <div className="slider" data-aos="zoom-in" data-aos-duration="1000">
                                 <div className="service-card">
                                     <div className="card-top">
                                         <img src={items.imageLink} alt={items.altText} />
@@ -148,12 +155,12 @@ function Home() {
 
             <Container fluid className="about-us" id="about">
                 <div className="overlay-about-us">
-                    <h1>About us</h1>
+                    <h1 data-aos="zoom-in" data-aos-duration="1000">About us</h1>
 
-                    <p>Named “Best Salon” by Main Line Magazine & The Philadelphia Inquirer, Prauge Salon &
+                    <p data-aos="zoom-in" data-aos-duration="1000">Named “Best Salon” by Main Line Magazine & The Philadelphia Inquirer, Express Salon &
                         Style Bar has been committed to “raising the bar ” since opening our doors in 2014.
                         Our mission is simple, give every guest an excellent experience by providing them
-                        with a warm, inviting culture & results that surpass expectations.At Privé we are
+                        with a warm, inviting culture & results that surpass expectations.At Express we are
                         passionate about making people feel good while looking their best. Attending advanced
                         education allows us to keep up with the latest trends and provide each guest with a
                         unique & customizable result. For your convenience, we are open 7 days a week & offers

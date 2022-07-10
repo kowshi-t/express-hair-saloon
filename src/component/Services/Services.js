@@ -22,7 +22,7 @@ function Services() {
               <h3>{type}</h3>
               <div className="col">
                 <p>
-                  At Prauge we are passionate about making people feel good while looking their best.
+                  At Express we are passionate about making people feel good while looking their best.
                   Attending advanced education allows us to keep up with the latest trends and provide each
                   guest with a unique & customizable result. For your convenience, Schedule your reservation
                   today!

@@ -5,6 +5,10 @@
     --secondary: hsla(0, 0%, 3%, 0.847);
 }
 
+Container{
+    scroll-behavior: smooth;
+}
+
 .home-container {
     height: 625px;
     background: linear-gradient(135deg, var(--primary), var(--secondary)),

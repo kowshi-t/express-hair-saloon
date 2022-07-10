@@ -11,10 +11,10 @@ function Confirmation() {
             <div className="content">
                 <h1>Thank you for your reservation!</h1>
 
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
-                   incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-                   exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure 
-                   dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                <p>At Express we are passionate about making people feel good while looking their best.
+                   Attending advanced education allows us to keep up with the latest trends and provide
+                   each guest with a unique & customizable result. For your convenience, we are open 7 days
+                   a week & offers online booking 24 hours a day.
                 </p>
 
                 <h4>For further information contact us</h4>
@@ -23,7 +23,7 @@ function Confirmation() {
 
                 <h6>(487) 1070 1087</h6>
 
-                <h6>sales.salonprauge@sp.com</h6>
+                <h6>sales.salonexpress@sp.com</h6>
             </div>
         </Container>
     </>

@@ -15,10 +15,11 @@ function Header() {
             <Container>
                 <Navbar.Brand href="/home">
                     <img
-                        src="/logo.png"
+                        src="/logo-symbol.png"
                         className="d-inline-block align-top"
                         alt="Express Hair Saloon logo"
                     />
+                    <h3 className='logo-name'>Express Hair Salon</h3>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
