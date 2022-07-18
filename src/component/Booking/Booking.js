@@ -4,12 +4,11 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Header from '../Header/Header'
 import './Booking.css'
-import servicesData from '../../ServiceType.json';
-import StripeCheckout from 'react-stripe-checkout'
 import { useParams, useNavigate } from "react-router-dom";
 import emailjs from 'emailjs-com';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import StripeCheckout from 'react-stripe-checkout';
 
 const MySwal = withReactContent(Swal);
 
@@ -21,12 +20,28 @@ function Booking() {
   const form = useRef();
   // let [typePrice, setTypePrice] = useState();
 
+  const [sType, setSType] = useState(type);
+  const [pricee, setPrice] = useState(0);
+
+  useEffect(() => {
+    if (sType == "Haircut") {
+      setPrice(100);
+    }
+    else if (sType == "Makeup") {
+      setPrice(200);
+    }
+    else {
+      setPrice(300);
+    }
+    //setService(sType,price);
+  }, [sType]);
+
   const [service, setService] = useState({
-    name: type,
+    name: sType,
     price: 25
   });
 
-  const handleStripeSuccess = ()=> {
+  const handleStripeSuccess = () => {
     MySwal.fire({
       icon: 'success',
       title: 'Payment was successful'
@@ -54,18 +69,19 @@ function Booking() {
       "Content-Type": "application/json"
     }
 
-    return fetch(`http://localhost:3001/api/payment`, {
-      method: "POST",
-      headers,
-      body: JSON.stringify(body)
-    }).then(response => {
-      handleStripeSuccess();
-      console.log("RESPONSE ", response);
-      const { status } = response;
-      console.log("STATUS ", status);
-
-    })
-      .catch(error => console.log(error));
+    try {
+      const response = fetch(`http://localhost:3001/api/payment`, {
+        method: "POST",
+        headers,
+        body: JSON.stringify(body)
+      })
+      handleStripeSuccess()
+      console.log("RESPONSE ", response)
+      const { status } = response
+      console.log("STATUS ", status)
+    } catch (error) {
+      return console.log(error)
+    }
   }
 
 
@@ -79,32 +95,20 @@ function Booking() {
     const { name, value } = e.target;
     setFormValues({ ...formValues, [name]: value });
   };
-  
-  // const handleChangeService = (e) =>{
-  //   if(e.target.value === 'Haircut'){
-  //     setTypePrice = servicesData[0].price;
-  //     console.log("price ------------ " + servicesData[0].price);
-  //     console.log("service price ------------ " + typePrice);   
-  //   }
-  //   else if(e.target.value === 'Hair Styling'){
-  //     setTypePrice = servicesData[2].price;
-  //     console.log("price ------------ " + servicesData[2].price);
-  //     console.log("service price ------------ " + typePrice);
-  //   }
-  //   else if(e.target.value === 'Makeup'){
-  //     setTypePrice = servicesData[3].price;
-  //     console.log("price ------------ " + servicesData[3].price);
-  //     console.log("service price ------------ " + typePrice);
-  //   }
-  // }
 
   const handleSubmit = (e) => {
     console.log("inside handle submit method");
     e.preventDefault();
     setFormErrors(validate(formValues));
     setIsSubmit(true);
-    console.log("form values ----------- "+formValues);
+    console.log("form errors"+ Object.keys(formErrors).length);
+    console.log("isSubmit"+ isSubmit);
   };
+
+  const handleService = (e) => {
+    setSType(e.target.value);
+    console.log(e.target.value)
+  }
 
 
   useEffect(() => {
@@ -112,8 +116,9 @@ function Booking() {
     }
   }, [formErrors])
 
+  const errors = {};
   const validate = (values) => {
-    const errors = {};
+    
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.fname) {
       errors.fname = "First name is required!";
@@ -136,10 +141,12 @@ function Booking() {
     else if (values.timeBook < '08:00' || values.timeBook > '18:00') {
       errors.timeBook = "Working hours 8AM to 6PM";
     }
+    console.log(`------ERROR`, errors)
     return errors;
   };
 
   return (
+
     <>
       <Header />
       <Row className="row-booking">
@@ -151,7 +158,7 @@ function Booking() {
                   <h3>Booking details</h3>
                   <div className="form-inner-content">
                     <Form.Group className="mb-3" controlId="formService">
-                      <Form.Select name='service' defaultValue={type} onChange={handleChange}>
+                      <Form.Select name='service' defaultValue={type} onChange={handleService}>
                         <option value="Haircut">Haircut</option>
                         <option value="Hair Styling">Hair Styling</option>
                         <option value="Makeup">Makeup</option>
@@ -187,20 +194,21 @@ function Booking() {
                   </div>
 
                   <div className="booking-payment">
-                    <h3>Total: USD {service.price}.00</h3>
+                    <h3>Total: USD {pricee}.00</h3>
 
-                    <StripeCheckout
-                      stripeKey="pk_test_51LIe9RLReLCeEpqKFO4jfDTlZD2r2sudEnL5mOihAT5kjoUOTpCYKHkrgViUjUepdT0X627XWiXVzsrCDFCoaAXP007elxJFc7"
-                      token={makePayment}
-                      name="Express Hair Saloon"
-                      amount={service.price * 100}
-                    >
-                      <button className="btn-submit" type='submit' onClick={handleSubmit}>Pay Now</button>
-                    </StripeCheckout>
-
-                    {/* <button className="btn-submit" type='submit' onClick={handleSubmit}>Pay Now</button> */}
-                    {/* <Button className="btn-submit" type='submit'>Pay Now</Button> */}
-                    {/* <Button className="btn-submit" onClick={handleSubmit}>Pay Now</Button> */}
+                    {
+                      isSubmit === false || Object.keys(formErrors).length > 0 ?
+                        <button className="btn-submit" type='submit' onClick={handleSubmit}>Pay Now</button>
+                        :
+                        <StripeCheckout
+                          stripeKey="pk_test_51LIe9RLReLCeEpqKFO4jfDTlZD2r2sudEnL5mOihAT5kjoUOTpCYKHkrgViUjUepdT0X627XWiXVzsrCDFCoaAXP007elxJFc7"
+                          token={makePayment}
+                          name="Express Hair Saloon"
+                          amount={pricee * 100}
+                        >
+                          <button className="btn-submit" type='submit' onClick={handleSubmit}>Pay Now</button>
+                        </StripeCheckout>
+                    }
                   </div>
                 </div>
               </form>
@@ -212,11 +220,6 @@ function Booking() {
           </div>
         </Col>
       </Row>
-
-      {/* <StripeCheckout
-        token={this.onToken}
-        stripeKey="my_PUBLISHABLE_stripekey"
-      /> */}
     </>
   )
 }
